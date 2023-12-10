@@ -10,6 +10,14 @@ html {
   margin-top: 1.5rem;
 }
 
+.book-title {
+  text-transform: capitalize;
+}
+.book-update {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .book-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
