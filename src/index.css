@@ -1,1 +1,26 @@
+:root {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+html {
+  margin: 0 auto;
+  max-width: 1170px;
+}
 
+.create-book {
+  margin-top: 1.5rem;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.book {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+button,
+input {
+  padding: 0.5rem 1rem;
+}

@@ -12,15 +12,19 @@ export default function BookCreate({ onCreate }) {
     setBookTitle("");
   }
   return (
-    <div>
+    <div className="create-book">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="book-name">Title</label>
+          <p>
+            <label htmlFor="book-name">Title</label>
+          </p>
+
           <input
             type="text"
             id="book-name"
             onChange={handleChange}
             value={bookTitle}
+            placeholder="Enter Book title"
           />
 
           <button type="submit">Add Book</button>
