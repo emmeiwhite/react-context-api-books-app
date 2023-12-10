@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function BookEdit({ onEdit, id, removeBookEdit }) {
+export default function BookEdit({ onEdit, id, title, removeBookEdit }) {
   const [bookEditTitle, setBookEditTitle] = useState("");
 
   function handleEditLocal() {
@@ -15,7 +15,7 @@ export default function BookEdit({ onEdit, id, removeBookEdit }) {
     <div>
       <div className="form-group">
         <p>
-          <label htmlFor="book-name">Title</label>
+          <label htmlFor="book-name">TITLE</label>
         </p>
 
         <form onSubmit={handleEditLocal}>
