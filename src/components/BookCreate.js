@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
-import BooksContext from "../context/books";
+import React, { useState } from "react";
+import useBooksContext from "../custom-hooks/use-books-context";
 
 export default function BookCreate() {
-  const { createBook } = useContext(BooksContext); // Getting the method directly from the context
+  const { createBook } = useBooksContext(); // Getting the method directly from the context
   const [bookTitle, setBookTitle] = useState("");
   function handleChange(e) {
     setBookTitle(e.target.value);

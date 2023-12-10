@@ -1,10 +1,11 @@
 import React from "react";
-import { useState, useContext } from "react";
-import BooksContext from "../context/books";
+import { useState } from "react";
+
+import useBooksContext from "../custom-hooks/use-books-context";
 
 export default function BookEdit({ id, removeBookEdit }) {
   const [bookEditTitle, setBookEditTitle] = useState("");
-  const { editBook } = useContext(BooksContext);
+  const { editBook } = useBooksContext();
 
   function handleEditLocal() {
     if (!bookEditTitle) return;

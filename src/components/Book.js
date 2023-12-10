@@ -1,11 +1,12 @@
-import React, { useState, useContext } from "react";
-import BooksContext from "../context/books";
+import React, { useState } from "react";
+
 import BookEdit from "./BookEdit";
+import useBooksContext from "../custom-hooks/use-books-context";
 
 export default function Book({ id, title }) {
   const [isEdit, setIsEdit] = useState(false);
 
-  const { deleteBook, editBook } = useContext(BooksContext);
+  const { deleteBook } = useBooksContext();
 
   // function as prop to update isEdit state in the child BookEdit Component
   function showBookEdit() {
