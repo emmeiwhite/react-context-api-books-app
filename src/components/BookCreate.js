@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 
-export default function BookCreate() {
+export default function BookCreate({ onCreate }) {
   const [bookTitle, setBookTitle] = useState("");
   function handleChange(e) {
     setBookTitle(e.target.value);
   }
-  function handleSubmit() {}
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!bookTitle) return;
+    onCreate(bookTitle);
+    setBookTitle("");
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
