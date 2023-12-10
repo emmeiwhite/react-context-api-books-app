@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import BookEdit from "./BookEdit";
 
-export default function Book({ id, title, onDelete }) {
+export default function Book({ id, title, onDelete, onEdit }) {
+  const [isEdit, setIsEdit] = useState(false);
+
+  // function as prop to update isEdit state in the child BookEdit Component
+  function showBookEdit() {
+    setIsEdit(true);
+  }
+
+  function removeBookEdit() {
+    setIsEdit(false);
+  }
   return (
     <div className="book">
-      <h3 className="book-title">{title}</h3>
-      <form className="book-update">
-        <button onClick={() => onDelete(id)}>Delete Book</button>
-        <button>Edit Book</button>
-      </form>
+      {/* We are going to either show title or book edit component, 
+      that's why we require a component level state to handle this */}
+
+      {isEdit ? (
+        <BookEdit
+          onEdit={onEdit}
+          id={id}
+          removeBookEdit={removeBookEdit}
+        />
+      ) : (
+        <>
+          <h3 className="book-title">{title}</h3>
+          <button onClick={() => onDelete(id)}>Delete Book</button>
+          <button
+            type="button"
+            onClick={showBookEdit}
+          >
+            Edit Book
+          </button>
+        </>
+      )}
     </div>
   );
 }

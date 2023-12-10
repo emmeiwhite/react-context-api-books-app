@@ -17,12 +17,26 @@ function App() {
     });
   }
 
+  // editing the item [U of CRUD] --- again passing the function as props, lots of prop-drilling in action
+  function editBook(id, title) {
+    setBooks((PrevBooks) => {
+      return PrevBooks.map((bk) => {
+        if (bk.id === id) {
+          return { ...bk, title };
+        }
+
+        return bk;
+      });
+    });
+  }
+
   return (
     <div className="App">
       {/* BookList Component */}
       <BookList
         books={books}
         onDelete={deleteBook}
+        onEdit={editBook}
       />
 
       {/* Here we go */}

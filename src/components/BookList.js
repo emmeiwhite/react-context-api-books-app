@@ -1,7 +1,7 @@
 import React from "react";
 import Book from "./Book";
 
-export default function BookList({ books, onDelete }) {
+export default function BookList({ books, onDelete, onEdit }) {
   return (
     <>
       <h1>BookList</h1>
@@ -11,6 +11,7 @@ export default function BookList({ books, onDelete }) {
             {...book}
             key={book.id}
             onDelete={onDelete}
+            onEdit={onEdit}
           />
         ))}
       </div>
