@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 import axios from "axios";
 
 const BooksContext = createContext();
@@ -6,10 +6,10 @@ const BooksContext = createContext();
 function Provider({ children }) {
   const [books, setBooks] = useState([]);
   // here we'll add all our components Global state and our Business Logic
-  async function fetchBooks() {
+  const fetchBooks = useCallback(async () => {
     const response = await axios.get("http://localhost:3001/books");
     setBooks(response.data);
-  }
+  }, []);
   // function as prop to add the title [C of CRUD]
   async function createBook(title) {
     /** 1) Before we re-render out UI with a state changes, let's first save the new book in our database */
