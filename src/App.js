@@ -1,9 +1,16 @@
-import "./App.css";
+import { useState } from "react";
+import BookList from "./components/BookList";
+import BookCreate from "./components/BookCreate";
 
 function App() {
+  const [books] = useState([]);
+
   return (
     <div className="App">
-      <h1>This is where all our Components gets rendered!</h1>
+      <BookList />
+
+      {/* Here we go */}
+      <BookCreate />
     </div>
   );
 }
