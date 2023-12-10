@@ -24,7 +24,11 @@ export default function Book({ id, title, onDelete, onEdit }) {
           removeBookEdit={removeBookEdit}
         />
       ) : (
-        <>
+        <div className="book-content">
+          <img
+            src={`https://picsum.photos/seed/${id}/300/200`}
+            alt={title}
+          />
           <h3 className="book-title">{title}</h3>
           <button onClick={() => onDelete(id)}>Delete Book</button>
           <button
@@ -33,7 +37,7 @@ export default function Book({ id, title, onDelete, onEdit }) {
           >
             Edit Book
           </button>
-        </>
+        </div>
       )}
     </div>
   );
