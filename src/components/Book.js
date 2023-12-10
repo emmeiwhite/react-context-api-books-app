@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import BooksContext from "../context/books";
 import BookEdit from "./BookEdit";
 
-export default function Book({ id, title, onDelete, onEdit }) {
+export default function Book({ id, title }) {
   const [isEdit, setIsEdit] = useState(false);
+
+  const { deleteBook, editBook } = useContext(BooksContext);
 
   // function as prop to update isEdit state in the child BookEdit Component
   function showBookEdit() {
@@ -12,6 +15,7 @@ export default function Book({ id, title, onDelete, onEdit }) {
   function removeBookEdit() {
     setIsEdit(false);
   }
+
   return (
     <div className="book">
       {/* We are going to either show title or book edit component, 
@@ -19,7 +23,6 @@ export default function Book({ id, title, onDelete, onEdit }) {
 
       {isEdit ? (
         <BookEdit
-          onEdit={onEdit}
           id={id}
           removeBookEdit={removeBookEdit}
         />
@@ -30,7 +33,7 @@ export default function Book({ id, title, onDelete, onEdit }) {
             alt={title}
           />
           <h3 className="book-title">{title}</h3>
-          <button onClick={() => onDelete(id)}>Delete Book</button>
+          <button onClick={() => deleteBook(id)}>Delete Book</button>
           <button
             type="button"
             onClick={showBookEdit}
