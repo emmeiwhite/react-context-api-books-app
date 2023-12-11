@@ -28,6 +28,11 @@ html {
   padding: 1rem;
 }
 
+.book img {
+  object-fit: cover;
+  width: 100%;
+}
+
 button,
 input {
   padding: 0.5rem 1rem;
