@@ -20,7 +20,7 @@ export default function BookEdit({ editBookById, id, setIsBookEdit }) {
   }
   return (
     <form onSubmit={handleSubmitEdit}>
-      <h2>Title</h2>
+      <h3>New Title</h3>
       <input
         type="text"
         value={editedBook}

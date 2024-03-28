@@ -10,7 +10,7 @@ export default function Book({ id, name, deleteBookId, editBookById }) {
       <h3 className="book-title">{name}</h3>
       <div className="book-update">
         <span
-          onClick={(e) => setIsBookEdit(true)}
+          onClick={(e) => setIsBookEdit(!isBookEdit)}
           className="book-edit"
         >
           ✍️
