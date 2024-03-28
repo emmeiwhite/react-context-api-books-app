@@ -13,10 +13,6 @@ html {
 .book-title {
   text-transform: capitalize;
 }
-.book-update {
-  display: flex;
-  gap: 0.5rem;
-}
 
 .book-list {
   display: grid;
@@ -24,8 +20,22 @@ html {
   gap: 2rem;
 }
 .book {
+  position: relative;
   border: 1px solid #ccc;
   padding: 1rem;
+}
+
+.book-update {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.book-delete,
+.book-edit {
+  cursor: pointer;
 }
 
 .book img {
