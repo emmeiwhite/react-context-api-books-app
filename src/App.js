@@ -4,69 +4,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const [books, setBooks] = useState([]);
-
-  // 0. We need to get all the books in the db.json file (api when the application starts). useEffect is the best place to do so!
-
-  useEffect(function () {
-    async function getAllBooks() {
-      const response = await axios.get("http://localhost:3002/books");
-      console.log(response);
-
-      setBooks(response.data);
-    }
-
-    getAllBooks();
-  }, []);
-
-  // 1. function createBook passing to the BookCreate to get the book submitted
-  async function createBook(book) {
-    const { name } = book;
-
-    const response = await axios.post("http://localhost:3002/books", {
-      name,
-    });
-
-    setBooks([...books, response.data]);
-
-    /*
-    console.log(book);
-    setBooks([...books, book]);
-    */
-  }
-
-  // 3. Deleting the book on the Api then updating the state locally
-  async function deleteBookId(id) {
-    const response = await axios.delete("http://localhost:3002/books/" + id);
-    const updatedBooks = books.filter((book) => book.id !== id);
-    setBooks(updatedBooks);
-  }
-
-  // 4. Editing the book on the Api then updating the state locally
-  async function editBookById(editedBook) {
-    const { id, name } = editedBook;
-    const response = await axios.put("http://localhost:3002/books/" + id, {
-      name,
-    });
-    // console.log(editedBook);
-    const editedBooks = books.map((book) =>
-      book.id === editedBook.id ? { ...book, ...response.data } : book
-    );
-
-    setBooks(editedBooks);
-  }
-
   return (
     <div className="App">
       {/* BookList Component */}
-      <BookList
-        books={books}
-        deleteBookId={deleteBookId}
-        editBookById={editBookById}
-      />
+      <BookList />
 
       {/* Here we go */}
-      <BookCreate createBook={createBook} />
+      <BookCreate />
     </div>
   );
 }

@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { BooksContext } from "../context/books";
 
-export default function BookEdit({ editBookById, id, setIsBookEdit }) {
+export default function BookEdit({ id, setIsBookEdit }) {
+  const { editBookById } = useContext(BooksContext);
+
   const [editedBook, setEditedBook] = useState("");
 
   function handleSubmitEdit(e) {

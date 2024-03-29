@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import BookEdit from "./BookEdit";
+import { BooksContext } from "../context/books";
 
-export default function Book({ id, name, deleteBookId, editBookById }) {
+export default function Book({ id, name }) {
+  const { deleteBookId } = useContext(BooksContext);
   // EditForm Component is required to Edit the BookTitle, but we need to conditionally render that UI from here
-
   const [isBookEdit, setIsBookEdit] = useState(false);
   return (
     <div className="book">
@@ -26,7 +27,6 @@ export default function Book({ id, name, deleteBookId, editBookById }) {
 
       {isBookEdit && (
         <BookEdit
-          editBookById={editBookById}
           id={id}
           isBookEdit={isBookEdit}
           setIsBookEdit={setIsBookEdit}

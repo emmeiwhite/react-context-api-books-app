@@ -1,20 +1,56 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 const BooksContext = createContext(); // 1. Create the context
 
 function Provider({ children }) {
-  const [count, setCount] = useState(0);
+  const [books, setBooks] = useState([]);
 
-  function increment() {
-    setCount(count + 1);
+  useEffect(function () {
+    async function getAllBooks() {
+      const response = await axios.get("http://localhost:3002/books");
+      console.log(response);
+
+      setBooks(response.data);
+    }
+
+    getAllBooks();
+  }, []);
+
+  async function createBook(book) {
+    const { name } = book;
+
+    const response = await axios.post("http://localhost:3002/books", {
+      name,
+    });
+
+    setBooks([...books, response.data]);
   }
 
-  // 2. Specify the data that will be shared across whole application
-  const valuesToShare = {
-    count: count,
-    increment: increment,
-  };
+  async function deleteBookId(id) {
+    await axios.delete("http://localhost:3002/books/" + id);
+    const updatedBooks = books.filter((book) => book.id !== id);
+    setBooks(updatedBooks);
+  }
 
+  async function editBookById(editedBook) {
+    const { id, name } = editedBook;
+    const response = await axios.put("http://localhost:3002/books/" + id, {
+      name,
+    });
+    const editedBooks = books.map((book) =>
+      book.id === editedBook.id ? { ...book, ...response.data } : book
+    );
+
+    setBooks(editedBooks);
+  }
+
+  const valuesToShare = {
+    books,
+    deleteBookId,
+    editBookById,
+    createBook,
+  };
   return (
     <BooksContext.Provider value={valuesToShare}>
       {children}

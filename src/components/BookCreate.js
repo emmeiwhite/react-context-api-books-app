@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import React, { useContext, useState } from "react";
+import { BooksContext } from "../context/books";
+// import { v4 as uuidv4 } from "uuid";
 
-export default function BookCreate({ createBook }) {
+export default function BookCreate() {
+  const { createBook } = useContext(BooksContext);
   const [bookName, setBookName] = useState("");
 
   function handleBookSubmit(e) {
