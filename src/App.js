@@ -6,7 +6,7 @@ import axios from "axios";
 function App() {
   const [books, setBooks] = useState([]);
 
-  // 0. We need to get all the books in the db.json file (api when the application starts)
+  // 0. We need to get all the books in the db.json file (api when the application starts). useEffect is the best place to do so!
 
   useEffect(function () {
     async function getAllBooks() {
@@ -35,7 +35,9 @@ function App() {
     */
   }
 
-  function deleteBookId(id) {
+  // 3. Deleting the book on the Api then updating the state locally
+  async function deleteBookId(id) {
+    const response = await axios.delete("http://localhost:3002/books/" + id);
     const updatedBooks = books.filter((book) => book.id !== id);
     setBooks(updatedBooks);
   }
