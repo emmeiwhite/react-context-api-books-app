@@ -1,20 +1,8 @@
 {
   "books": [
     {
-      "title": "Apple",
-      "id": 5
-    },
-    {
-      "title": "Sea Hawks",
-      "id": 6
-    },
-    {
-      "title": "Coders",
-      "id": 7
-    },
-    {
-      "title": "Desk",
-      "id": 8
+      "title": "Harry Potter",
+      "id": 2
     }
   ]
 }
