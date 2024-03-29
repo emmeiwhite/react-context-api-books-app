@@ -1,15 +1,26 @@
 import BookList from "./components/BookList";
 import BookCreate from "./components/BookCreate";
 import { useState } from "react";
+import axios from "axios";
 
 function App() {
   const [books, setBooks] = useState([]);
 
-  // 1. function addBook passing to the BookCreate to get the book submitted
+  // 1. function createBook passing to the BookCreate to get the book submitted
 
-  function addBook(book) {
+  async function createBook(book) {
+    const { name } = book;
+
+    const response = await axios.post("http://localhost:3002/books", {
+      name,
+    });
+
+    setBooks([...books, response.data]);
+
+    /*
     console.log(book);
     setBooks([...books, book]);
+    */
   }
 
   function deleteBookId(id) {
@@ -36,7 +47,7 @@ function App() {
       />
 
       {/* Here we go */}
-      <BookCreate addBook={addBook} />
+      <BookCreate createBook={createBook} />
     </div>
   );
 }

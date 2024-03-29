@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-export default function BookCreate({ addBook }) {
+export default function BookCreate({ createBook }) {
   const [bookName, setBookName] = useState("");
 
   function handleBookSubmit(e) {
@@ -12,13 +12,21 @@ export default function BookCreate({ addBook }) {
 
     if (!bookName) return;
 
+    /* ---
     const book = {
       name: bookName,
       id: uuidv4(),
     };
+   --- */
+
+    // In JSON-Server, we no longer have to generate our random ids, JSON server will do it for us
+
+    const book = {
+      name: bookName,
+    };
 
     // Passing book to the parent to be added to the list of books
-    addBook(book);
+    createBook(book);
     setBookName("");
   }
   return (
