@@ -1,7 +1,5 @@
 import BookList from "./components/BookList";
 import BookCreate from "./components/BookCreate";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 function App() {
   return (
