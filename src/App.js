@@ -42,10 +42,15 @@ function App() {
     setBooks(updatedBooks);
   }
 
-  function editBookById(editedBook) {
-    console.log(editedBook);
+  // 4. Editing the book on the Api then updating the state locally
+  async function editBookById(editedBook) {
+    const { id, name } = editedBook;
+    const response = await axios.put("http://localhost:3002/books/" + id, {
+      name,
+    });
+    // console.log(editedBook);
     const editedBooks = books.map((book) =>
-      book.id === editedBook.id ? { ...book, name: editedBook.name } : book
+      book.id === editedBook.id ? { ...book, ...response.data } : book
     );
 
     setBooks(editedBooks);

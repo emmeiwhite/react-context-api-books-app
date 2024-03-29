@@ -1,7 +1,7 @@
 {
   "books": [
     {
-      "name": "Book-1",
+      "name": "A Good Book",
       "id": 7
     },
     {
@@ -9,16 +9,8 @@
       "id": 8
     },
     {
-      "name": "Book-4",
-      "id": 10
-    },
-    {
       "name": "Book-5",
       "id": 11
-    },
-    {
-      "name": "Book-3",
-      "id": 12
     }
   ]
 }
