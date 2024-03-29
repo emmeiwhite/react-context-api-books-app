@@ -1,13 +1,25 @@
 import BookList from "./components/BookList";
 import BookCreate from "./components/BookCreate";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
   const [books, setBooks] = useState([]);
 
-  // 1. function createBook passing to the BookCreate to get the book submitted
+  // 0. We need to get all the books in the db.json file (api when the application starts)
 
+  useEffect(function () {
+    async function getAllBooks() {
+      const response = await axios.get("http://localhost:3002/books");
+      console.log(response);
+
+      setBooks(response.data);
+    }
+
+    getAllBooks();
+  }, []);
+
+  // 1. function createBook passing to the BookCreate to get the book submitted
   async function createBook(book) {
     const { name } = book;
 
